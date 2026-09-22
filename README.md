@@ -6,6 +6,30 @@ An intelligent, multi-agent automated system designed to streamline complex insu
 ## System Architecture & Multi-Agent Design
 The system implements a **Multi-Agent Collaborative Architecture** to handle heterogeneous and multi-step insurance workflows:
 
+Multi-Agent Topology (系統架構圖)
+```mermaid
+graph TD
+    User([Insured User / Client]) -->|Input: User Info, Policy, Query, Files| Orchestrator[Multi-Agent Orchestrator Hub]
+    
+    Orchestrator -->|1. Identity Verification| Auth[ID & Birthday Auth Tool]
+    Orchestrator -->|2. Intent: General Q&A / Personal Query| DataAgent[Data Query Agent]
+    Orchestrator -->|3. Intent: Claim Application| ClaimAgent[Claim Application Agent]
+
+    subgraph Data Query Agent Pipeline
+        DataAgent --> Qdrant[(Qdrant Vector Store)]
+        Qdrant --> Gemini[Google Gemini Embeddings]
+        DataAgent --> Calc[Payout Calculation Tool]
+    end
+
+    subgraph Claim Application Agent Pipeline
+        ClaimAgent --> DocParser[Document Parser Tool]
+        ClaimAgent --> PolicyStore[Policy Terms Database]
+        ClaimAgent --> OutputParser[Structured Output Parser]
+    end
+
+    DataAgent --> Output([Response / Guidance])
+    ClaimAgent --> Output
+
 1. **Multi-Agent Orchestrator (多代理協作中樞 Agent):** 
    * Acts as the central decision-making hub. Handles user authentication (ID + Birthday verification) and dynamically routes intents.
 2. **Data Query Agent (資料查詢 Agent):** 

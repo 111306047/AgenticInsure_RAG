@@ -13,12 +13,6 @@ The system implements a **Multi-Agent Collaborative Architecture** to handle het
 3. **Claim Application Agent (申請理賠 Agent):** 
    * Guides users through claim procedures, parses uploaded documents, and performs preliminary eligibility checks and payout estimations.
 
-## Tech Stack
-* **Workflow Automation & Orchestration:** n8n (Local Environment)[cite: 1]
-* **AI & LLM Framework:** Ollama Chat Models, Custom Prompt Engineering, Structured Output Parsers[cite: 1]
-* **Vector Search & Data:** Python, Pandas, GitHub Releases (Vector Datasets)[cite: 1]
-* **Domain:** InsurTech, Agentic AI, Retrieval-Augmented Generation (RAG)[cite: 1]
-
 ## n8n Workflow Templates
 To ensure transparency and reproducibility, the core n8n low-code workflow templates are provided in this repository:
 * `workflows/insurance_main_workflow.json`: The multi-agent orchestration and routing logic.
